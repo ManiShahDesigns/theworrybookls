@@ -9,10 +9,45 @@ import Nav from "./components/Nav/Nav";
 import Header from "./components/Header/Header";
 import AddThought from "./components/AddThought/AddThought";
 
+import background from './components/Header/header.jpg'
+
 // CSS
 import "./css/style.css";
+// import "./scss/style.css";
 
 function App() {
+  // Stule 
+  const liStyle = {
+    margin: "0",
+    borderBottom: "1px solid grey",
+    padding: "0.5rem 0",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  }
+
+  const trashStyle = {
+    color: "red",
+  }
+
+  const editStyle = {
+    color: "green",
+  }
+
+  const appStyle = {
+    backgroundImage: `url(${background})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center bottom",
+    height: " 100vh",
+    width: "100%"
+  }
+
+  const appWrapper = {
+    height: "calc(100 % - 80px)",
+    paddingTop: "80px",
+  }
+
   // Thoughts
   const [thoughts, setthoughts] = useState({
     id: uuidv4(),
@@ -98,7 +133,7 @@ function App() {
   // Show thoughts on the side
   const getThoughtsFromLS = () => {
     if (thoughtsFromLS !== null) {
-      return thoughtsFromLS.map((thought) => <li key={thought.id} className={thought.id}>
+      return thoughtsFromLS.map((thought) => <li style={liStyle} key={thought.id} className={thought.id}>
         <div className="thought-description">
           <span>
             {thought.description}
@@ -106,8 +141,8 @@ function App() {
         </div>
 
         <div className="thought-buttons">
-          <button className="btn" onClick={(e) => deleteThought(thought, e)}><i className="fas fa-trash"></i></button>
-          <button className="btn" onClick={(e) => populateForm(thought, e)}><i className="far fa-edit"></i></button>
+          <button className="btn" onClick={(e) => deleteThought(thought, e)}><i style={trashStyle} className="fas fa-trash"></i></button>
+          <button className="btn" onClick={(e) => populateForm(thought, e)}><i style={editStyle} className="far fa-edit"></i></button>
         </div>
       </li>)
     }
@@ -116,11 +151,11 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div style={appStyle} className="App">
       <Router>
         <Nav />
 
-        <div className="app-wrapper">
+        <div style={appWrapper} className="app-wrapper">
           <Route exact path="/" component={Header} />
 
           <Switch>

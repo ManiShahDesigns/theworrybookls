@@ -1,14 +1,18 @@
 // Bootstrap
-@import "../../node_modules/bootstrap/scss/functions";
-@import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-// Components
-@import "../components/Header/header";
-@import "../components/Nav/nav";
-@import "../components/AddThought/addthought";
-@import "../components/AddThoughtForm/addthoughtform";
-@import "../components/ThoughtsList/thoughstlist";
+.my-masonry-grid_column {
+  padding-left: 15px; /* gutter size */
+  background-clip: padding-box;
+}
 
-// General
-@import "./general";
+.my-masonry-grid_column > div {
+  margin-bottom: 15px;
+  border: 1px solid black;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1340px;
+  }
+}
